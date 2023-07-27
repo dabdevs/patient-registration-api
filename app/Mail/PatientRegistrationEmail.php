@@ -11,14 +11,20 @@ class PatientRegistrationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $name;
+    public $email;
+    public $phone_number;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($patient)
     {
-        //
+        $this->name = $patient->name;
+        $this->email = $patient->email;
+        $this->phone_number = $patient->phone_number;
     }
 
     /**
