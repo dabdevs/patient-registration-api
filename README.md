@@ -121,13 +121,8 @@ This Laravel Patient Registration API is open-source software licensed under the
 
 ## Author
 
-John Doe - [GitHub](https://github.com/your-username)
+Alain Jean - [GitHub](https://github.com/dabdevs)
 
 ## Acknowledgments
 
 - Thanks to the Laravel community for providing an amazing framework.
-- Special thanks to the Twilio team for their SMS integration.
-
----
-
-Feel free to customize this README template according to your application's specific details and requirements. It serves as a guide for users and potential contributors to understand your application's features, installation process, and usage instructions. Include any other relevant information that would be helpful for users and developers using your Laravel Patient Registration API.
