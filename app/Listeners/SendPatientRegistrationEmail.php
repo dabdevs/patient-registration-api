@@ -3,9 +3,11 @@
 namespace App\Listeners;
 
 use App\Events\PatientRegistered;
+use App\Jobs\SendPatientRegistrationEmailJob;
 use App\Mail\PatientRegistrationEmail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
 
 class SendPatientRegistrationEmail
 {
@@ -29,9 +31,7 @@ class SendPatientRegistrationEmail
      */
     public function handle(PatientRegistered $event)
     {
-        $patient = $event->patient; 
-
-        // Implement the email sending logic using Laravel's Mail class
-        Mail::to($patient->email)->send(new PatientRegistrationEmail($patient));
+        // Dispatch the Email sending job
+        SendPatientRegistrationEmailJob::dispatch($event->patient); 
     }
 }

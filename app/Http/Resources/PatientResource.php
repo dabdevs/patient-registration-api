@@ -8,14 +8,15 @@ class PatientResource extends JsonResource
 {
     public function toArray($request)
     {
+        $date_registered = \Carbon\Carbon::parse($this->created_at);
+        
         return [
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'phone_number' => $this->phone_number,
+            'phoneNumber' => $this->phone_number,
             'photo' => $this->photo,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'dateRegistered' => $date_registered->format('Y-m-d')
         ];
     }
 }

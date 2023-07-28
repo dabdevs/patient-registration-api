@@ -14,14 +14,16 @@ class PatientRegistered
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $patient;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($patient)
     {
-        //
+        $this->patient = $patient;
     }
 
     /**
