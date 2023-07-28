@@ -3,13 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\PatientRegistered;
-use App\Jobs\SendPatientRegistrationEmailJob;
-use App\Mail\PatientRegistrationEmail;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Jobs\SendPatientRegistrationConfirmationJob;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Facades\Mail;
 
-class SendPatientRegistrationEmail
+class SendPatientRegistrationConfirmation
 {
     use InteractsWithQueue;
 
@@ -26,12 +23,12 @@ class SendPatientRegistrationEmail
     /**
      * Handle the event.
      *
-     * @param  \App\Events\PatientRegistered  $event
+     * @param  object  $event
      * @return void
      */
     public function handle(PatientRegistered $event)
     {
         // Dispatch the Email sending job
-        SendPatientRegistrationEmailJob::dispatch($event->patient); 
+        SendPatientRegistrationConfirmationJob::dispatch($event->patient); 
     }
 }

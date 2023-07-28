@@ -29,7 +29,7 @@ class PatientRegistrationConfirmation extends Notification
      */
     public function via($notifiable)
     {
-        // Add 'sms' to the returned array when sms implementation is ready
+        // Add 'sms' to the returned array to activate sms notification after implementation is ready
         return ['mail'];
     }
 

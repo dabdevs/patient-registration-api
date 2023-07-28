@@ -25,7 +25,7 @@ class PatientController extends Controller
             'photo' => $path
         ]);
 
-        // Fire the event that will trigger the job to send the email notification
+        // Fire the event that will trigger the job to send the notifications
         event(new PatientRegistered($patient)); 
 
         return response()->json(['message' => 'Patient registered successfully'], 201);

@@ -10,7 +10,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class SendPatientRegistrationEmailJob implements ShouldQueue
+class SendPatientRegistrationConfirmationJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -32,7 +32,7 @@ class SendPatientRegistrationEmailJob implements ShouldQueue
      * @return void
      */
     public function handle() 
-    {
+    { 
         // Send the confirmation notification to the registered patient
         $this->patient->notify(new PatientRegistrationConfirmation($this->patient));
     }
