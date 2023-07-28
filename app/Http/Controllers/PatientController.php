@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PatientController extends Controller
 {
-    public function store(PatientRequest $request)
+    public function register(PatientRequest $request)
     {
         $photo = $request->file('document_photo');
 
@@ -31,9 +31,9 @@ class PatientController extends Controller
         return response()->json(['message' => 'Patient registered successfully'], 201);
     }
 
-    public function show($patient)
+    public function show($id)
     {
-        $patient = Patient::findOrFail($patient);
+        $patient = Patient::findOrFail($id); 
         
         return new PatientResource($patient); 
     }

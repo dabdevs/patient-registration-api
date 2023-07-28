@@ -27,7 +27,7 @@ class PatientRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:patients',
             'phone_number' => 'required|string|max:20',
-            'document_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'document_photo' => 'required|image|mimes:jpeg,png,jpg,jpf|max:2048',
         ];
     }
 }

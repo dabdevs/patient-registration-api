@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('patients', PatientController::class);
+Route::post('register', [PatientController::class, 'register']);
+Route::get('patients/{id}', [PatientController::class, 'show']);

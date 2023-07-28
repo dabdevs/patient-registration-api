@@ -78,16 +78,22 @@ php artisan migrate --seed
 php artisan queue:work
 ```
 
+10. Create symbolic link:
+
+```bash
+php artisan storage:link
+```
+
 ## API Endpoints
 
 ### Patient Registration
 
-- **Endpoint**: `/api/patients`
+- **Endpoint**: `/api/register`
 - **Method**: POST
 - **Parameters**:
   - `name` (string): Patient's name (required)
   - `email` (string): Patient's email address (required, valid email format)
-  - `phone` (string): Patient's phone number (required)
+  - `phone_number` (string): Patient's phone number (required)
   - `document_photo` (file): Patient's document photo (required, image or PDF format)
 
 ### Get Patient by ID

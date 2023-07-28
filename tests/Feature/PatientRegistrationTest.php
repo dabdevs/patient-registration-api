@@ -29,7 +29,7 @@ class PatientRegistrationTest extends TestCase
         ];
 
         // Send a POST request to the patient registration endpoint
-        $response = $this->json('POST', '/api/patients', $patient);
+        $response = $this->json('POST', '/api/register', $patient);
 
         // Assert that the response has a successful status code (e.g., 200)
         $response->assertStatus(200);
