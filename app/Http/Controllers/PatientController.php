@@ -12,7 +12,7 @@ class PatientController extends Controller
 {
     public function store(PatientRequest $request)
     {
-        $photo = $request->file('photo');
+        $photo = $request->file('document_photo');
 
         // Save the file in a specific patient files
         $path = Storage::put('files/patients', $photo);
@@ -22,7 +22,7 @@ class PatientController extends Controller
             'name' => $request->name, 
             'email' => $request->email,
             'phone_number' => $request->phone_number,
-            'photo' => $path
+            'document_photo' => $path
         ]);
 
         // Fire the event that will trigger the job to send the notifications

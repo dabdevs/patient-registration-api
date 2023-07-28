@@ -1,64 +1,127 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Laravel Patient Registration API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel Version](https://img.shields.io/badge/Laravel-8.x-red)
+![PHP Version](https://img.shields.io/badge/PHP-^7.4-blue)
 
-## About Laravel
+This is a Laravel API for patient registration, which allows users to register patients with their name, email address, phone number, and document photo. The application provides validation for user-entered data, stores patient information in a MySQL database, and sends a confirmation email asynchronously upon successful registration.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- User-friendly API for patient registration
+- Validation for required fields and appropriate data types
+- Storage of patient data in a MySQL database
+- Asynchronous email confirmation to avoid blocking the application
+- Secure and efficient handling of patient documents
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Requirements
 
-## Learning Laravel
+- PHP ^7.3
+- Laravel ^8.75
+- MySQL Database
+- Composer (for package installation)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone the repository:
 
-## Laravel Sponsors
+```bash
+git clone https://github.com/dabdevs/patient-registration-api.git
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+2. Move inside project folder:
 
-### Premium Partners
+```bash
+cd patient-registration-api
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+3. Build project with the following command:
+
+```bash
+./vendor/bin/sail up
+```
+
+4. Bash inside the container:
+
+```bash
+./vendor/bin/sail bash
+```
+
+5. Install composer dependencies:
+
+```bash
+composer install
+```
+
+6. Set up the environment:
+
+Copy the `.env.example` file to `.env` and update the necessary configurations, including database connection and mail settings.
+
+```bash
+cp .env.example .env
+```
+
+7. Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+8. Run database migrations and seeders:
+
+```bash
+php artisan migrate --seed
+```
+
+9. Run this command for the jobs:
+
+```bash
+php artisan queue:work
+```
+
+## API Endpoints
+
+### Patient Registration
+
+- **Endpoint**: `/api/patients`
+- **Method**: POST
+- **Parameters**:
+  - `name` (string): Patient's name (required)
+  - `email` (string): Patient's email address (required, valid email format)
+  - `phone` (string): Patient's phone number (required)
+  - `document_photo` (file): Patient's document photo (required, image or PDF format)
+
+### Get Patient by ID
+
+- **Endpoint**: `/api/patients/{id}`
+- **Method**: GET
+- **Parameters**:
+  - `id` (integer): Patient ID (required)
+
+## How to Use
+
+1. Register a new patient using the `/api/register` endpoint by providing the required parameters in the request body.
+
+2. Upon successful registration, the patient's data will be stored in the database, and a confirmation email will be sent asynchronously to the provided email address.
+
+3. To retrieve patient information, use the `/api/patients/{id}` endpoint, replacing `{id}` with the patient's ID.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Contributions are welcome! If you find any issues or want to enhance the application, feel free to open a pull request.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This Laravel Patient Registration API is open-source software licensed under the [MIT License](LICENSE).
+
+## Author
+
+John Doe - [GitHub](https://github.com/your-username)
+
+## Acknowledgments
+
+- Thanks to the Laravel community for providing an amazing framework.
+- Special thanks to the Twilio team for their SMS integration.
+
+---
+
+Feel free to customize this README template according to your application's specific details and requirements. It serves as a guide for users and potential contributors to understand your application's features, installation process, and usage instructions. Include any other relevant information that would be helpful for users and developers using your Laravel Patient Registration API.

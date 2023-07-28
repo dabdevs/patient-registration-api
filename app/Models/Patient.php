@@ -15,6 +15,6 @@ class Patient extends Model
         'email',
         'name',
         'phone_number',
-        'photo'
+        'document_photo'
     ];
 }
