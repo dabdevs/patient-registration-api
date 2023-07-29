@@ -2,9 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Notifications\PatientRegistrationConfirmation;
+use App\Notifications\V1\PatientRegistrationConfirmation;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;

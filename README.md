@@ -40,27 +40,27 @@ cd patient-registration-api
 composer install
 ```
 
-4. Set up the environment:
+4. Install Laravel Sail:
+
+```bash
+composer require laravel/sail --dev
+```
+
+5. Publish Sail's docker-compose.yml file to the root of the project:
+
+```bash
+php artisan sail:install
+```
+
+6. Set up the environment:
 
 Copy the `.env.example` file to `.env` and update the necessary configurations, including database connection and mail settings.
 
 ```bash
 cp .env.example .env
 ```
+
 Set the value of the DB_DATABASE in .env file to patient_management
-
-
-5. Install Laravel Sail:
-
-```bash
-composer require laravel/sail --dev
-```
-
-6. Publish Sail's docker-compose.yml file to the root of the project:
-
-```bash
-php artisan sail:install
-```
 
 7. Access mysql to create the database
 
@@ -72,7 +72,6 @@ CREATE DATABASE patient_management;
 
 8. Register the project path in Docker Desktop
    Preferences > Resources > File sharing > Add project path > Apply and restart
-
 
 9. Build project containers with the following command:
 

@@ -15,7 +15,7 @@ class PatientResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'phoneNumber' => $this->phone_number,
-            'documentPhoto' => $this->photo,
+            'documentPhoto' => $this->document_photo,
             'dateRegistered' => $date_registered->format('Y-m-d')
         ];
     }

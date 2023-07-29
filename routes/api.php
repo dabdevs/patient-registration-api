@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PatientController;
+use App\Http\Controllers\Api\V1\PatientController as V1PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('register', [PatientController::class, 'register']);
-Route::get('patients/{id}', [PatientController::class, 'show']);
+// Api routes for version 1
+Route::prefix('v1')->group(function () {
+    Route::post('register', [V1PatientController::class, 'register']);
+    Route::get('patients/{id}', [V1PatientController::class, 'show']);
+});
