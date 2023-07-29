@@ -106,7 +106,7 @@ php artisan queue:work
 ```
 
 
-13. Run database migrations and run the seeders:
+13. Run the database migrations and the seeders:
 
 ```bash
 php artisan migrate --seed
@@ -123,7 +123,7 @@ php artisan storage:link
 
 ### Patient Registration
 
--   **Endpoint**: `/api/register`
+-   **Endpoint**: `/api/v1/register`
 -   **Method**: POST
 -   **Parameters**:
     -   `name` (string): Patient's name (required)
@@ -133,18 +133,18 @@ php artisan storage:link
 
 ### Get Patient by ID
 
--   **Endpoint**: `/api/patients/{id}`
+-   **Endpoint**: `/api/v1/patients/{id}`
 -   **Method**: GET
 -   **Parameters**:
     -   `id` (integer): Patient ID (required)
 
 ## How to Use
 
-1. Register a new patient using the `/api/register` endpoint by providing the required parameters in the request body.
+1. Register a new patient using the `/api/v1/register` endpoint by providing the required parameters in the request body.
 
 2. Upon successful registration, the patient's data will be stored in the database, and a confirmation email will be sent asynchronously to the provided email address.
 
-3. To retrieve patient information, use the `/api/patients/{id}` endpoint, replacing `{id}` with the patient's ID.
+3. To retrieve patient information, use the `/api/v1/patients/{id}` endpoint, replacing `{id}` with the patient's ID.
 
 ## Contributing
 
