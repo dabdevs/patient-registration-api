@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 // Api routes for version 1
 Route::prefix('v1')->group(function () {
-    Route::post('register', [V1PatientController::class, 'register']);
-    Route::get('patients/{id}', [V1PatientController::class, 'show']);
+    Route::post('/register', [V1PatientController::class, 'register']);
+    Route::get('/patients/{id}', [V1PatientController::class, 'show']);
 });

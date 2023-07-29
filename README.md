@@ -28,11 +28,13 @@ This is a Laravel API for patient registration, which allows users to register p
 git clone https://github.com/dabdevs/patient-registration-api.git
 ```
 
+
 2. Move inside project folder:
 
 ```bash
 cd patient-registration-api
 ```
+
 
 3. Install composer dependencies:
 
@@ -40,76 +42,78 @@ cd patient-registration-api
 composer install
 ```
 
-4. Install Laravel Sail:
 
-```bash
-composer require laravel/sail --dev
-```
-
-5. Publish Sail's docker-compose.yml file to the root of the project:
-
-```bash
-php artisan sail:install
-```
-
-6. Set up the environment:
+4. Set up the environment:
 
 Copy the `.env.example` file to `.env` and update the necessary configurations, including database connection and mail settings.
 
 ```bash
 cp .env.example .env
 ```
-
 Set the value of the DB_DATABASE in .env file to patient_management
 
-7. Access mysql to create the database
+
+5. Install Laravel Sail:
 
 ```bash
-./vendor/bin/sail mysql
-
-CREATE DATABASE patient_management;
+composer require laravel/sail --dev
 ```
 
-8. Register the project path in Docker Desktop
-   Preferences > Resources > File sharing > Add project path > Apply and restart
 
-9. Build project containers with the following command:
+6. Publish Sail's docker-compose.yml file to the root of the project (choose mysql option):
+
+```bash
+php artisan sail:install
+```
+
+
+7. Build project containers with the following command:
 
 ```bash
 ./vendor/bin/sail up -d
 ```
 
-10. Bash inside the container to perform artisan commands:
+
+8. Register the project path in Docker Desktop
+   Preferences > Resources > File sharing > Add project path > Apply and restart
+
+
+9. Bash inside the container to perform artisan commands:
 
 ```bash
 ./vendor/bin/sail bash
 ```
 
-11. Generate the application key:
+
+10. Generate the application key:
 
 ```bash
 php artisan key:generate
 ```
 
-12. Create the tables for performing queue jobs:
+
+11. Create the tables for performing queue jobs:
 
 ```bash
 php artisan queue:table
 ```
 
-13. Run this command to listen to incoming queues:
+
+12. Run this command to listen to incoming queues:
 
 ```bash
 php artisan queue:work
 ```
 
-14. Run database migrations and run the seeders:
+
+13. Run database migrations and run the seeders:
 
 ```bash
 php artisan migrate --seed
 ```
 
-15. Create a symbolic link between public and storage directories:
+
+14. Create a symbolic link between public and storage directories:
 
 ```bash
 php artisan storage:link
