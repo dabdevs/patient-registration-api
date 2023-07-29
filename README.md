@@ -7,19 +7,18 @@ This is a Laravel API for patient registration, which allows users to register p
 
 ## Features
 
-- User-friendly API for patient registration
-- Validation for required fields and appropriate data types
-- Storage of patient data in a MySQL database
-- Asynchronous email confirmation to avoid blocking the application
-- Secure and efficient handling of patient documents
+-   User-friendly API for patient registration
+-   Validation for required fields and appropriate data types
+-   Storage of patient data in a MySQL database
+-   Asynchronous email confirmation to avoid blocking the application
+-   Secure and efficient handling of patient documents
 
 ## Requirements
 
-- PHP ^7.3
-- Laravel ^8.75
-- MySQL Database
-- Composer (for package installation)
-- Docker Desktop
+-   PHP ^7.3
+-   Laravel ^8.75
+-   MySQL Database
+-   Composer (for package installation)
 
 ## Installation
 
@@ -41,6 +40,18 @@ cd patient-registration-api
 composer install
 ```
 
+4. Install Laravel Sail:
+
+```bash
+composer require laravel/sail --dev
+```
+
+5. Publish Sail's docker-compose.yml file to the root of the project:
+
+```bash
+php artisan sail:install
+```
+
 6. Set up the environment:
 
 Copy the `.env.example` file to `.env` and update the necessary configurations, including database connection and mail settings.
@@ -49,97 +60,79 @@ Copy the `.env.example` file to `.env` and update the necessary configurations, 
 cp .env.example .env
 ```
 
-4. Install Laravel Sail:
+Set the value of the DB_DATABASE in .env file to patient_management
+
+7. Access mysql to create the database
 
 ```bash
-composer require laravel/sail --dev
+./vendor/bin/sail mysql
+
+CREATE DATABASE patient_management;
 ```
 
-4. Install Laravel Sail. Select mysql as database:
+8. Register the project path in Docker Desktop
+   Preferences > Resources > File sharing > Add project path > Apply and restart
 
-```bash
-php artisan sail:install
-```
-
-5. Configure proyect path in docker desktop:
-
-Navigate to the following view:
-Docker -> Preferences... -> Resources -> File Sharing
-
-Add the proyect path, press and restart
-
-3. Start the Docker containers:
+9. Build project containers with the following command:
 
 ```bash
 ./vendor/bin/sail up -d
 ```
 
-
-
-4. Bash inside the container:
+10. Bash inside the container to perform artisan commands:
 
 ```bash
 ./vendor/bin/sail bash
 ```
 
-5. Install composer dependencies:
-
-```bash
-composer install
-```
-
-
-
-7. Generate the application key:
+11. Generate the application key:
 
 ```bash
 php artisan key:generate
 ```
 
-8. Create the tables for performing queue jobs:
+12. Create the tables for performing queue jobs:
 
 ```bash
 php artisan queue:table
 ```
 
-9. Run database migrations and seeders:
-
-```bash
-php artisan migrate --seed
-```
-
-10. Create storage symbolic link:
-
-```bash
-php artisan storage:link
-```
-
-11. Create background process to watch and perform incoming jobs:
+13. Run this command to listen to incoming queues:
 
 ```bash
 php artisan queue:work
 ```
 
-12. Application should be running on localhost:8000
+14. Run database migrations and run the seeders:
+
+```bash
+php artisan migrate --seed
+```
+
+15. Create a symbolic link between public and storage directories:
+
+```bash
+php artisan storage:link
+```
 
 ## API Endpoints
 
 ### Patient Registration
 
-- **Endpoint**: `/api/register`
-- **Method**: POST
-- **Parameters**:
-  - `name` (string): Patient's name (required)
-  - `email` (string): Patient's email address (required, valid email format)
-  - `phone_number` (string): Patient's phone number (required)
-  - `document_photo` (file): Patient's document photo (required, image or PDF format)
+-   **Endpoint**: `/api/register`
+-   **Method**: POST
+-   **Parameters**:
+    -   `name` (string): Patient's name (required)
+    -   `email` (string): Patient's email address (required, valid email format)
+    -   `phone_number` (string): Patient's phone number (required)
+    -   `document_photo` (file): Patient's document photo (required, image or PDF format)
 
 ### Get Patient by ID
 
-- **Endpoint**: `/api/patients/{id}`
-- **Method**: GET
-- **Parameters**:
-  - `id` (integer): Patient ID (required)
+-   **Endpoint**: `/api/patients/{id}`
+-   **Method**: GET
+-   **Parameters**:
+    -   `id` (integer): Patient ID (required)
 
 ## How to Use
 
@@ -163,4 +156,4 @@ Alain Jean - [GitHub](https://github.com/dabdevs)
 
 ## Acknowledgments
 
-- Thanks to the Laravel community for providing an amazing framework.
+-   Thanks to the Laravel community for providing an amazing framework.
