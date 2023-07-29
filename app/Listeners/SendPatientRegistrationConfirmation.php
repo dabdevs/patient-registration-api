@@ -28,7 +28,7 @@ class SendPatientRegistrationConfirmation
      */
     public function handle(PatientRegistered $event)
     {
-        // Dispatch the Email sending job
+        // Dispatch the job to send notifications to registered patient
         SendPatientRegistrationConfirmationJob::dispatch($event->patient); 
     }
 }

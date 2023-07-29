@@ -34,10 +34,10 @@ git clone https://github.com/dabdevs/patient-registration-api.git
 cd patient-registration-api
 ```
 
-3. Build project with the following command:
+3. Start the Docker containers:
 
 ```bash
-./vendor/bin/sail up
+./vendor/bin/sail up -d
 ```
 
 4. Bash inside the container:
@@ -66,23 +66,31 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-8. Run database migrations and seeders:
+8. Create the tables for performing queue jobs:
+
+```bash
+php artisan queue:table
+```
+
+9. Run database migrations and seeders:
 
 ```bash
 php artisan migrate --seed
 ```
 
-9. Run this command for the jobs:
+10. Create storage symbolic link:
+
+```bash
+php artisan storage:link
+```
+
+11. Create background process to watch and perform incoming jobs:
 
 ```bash
 php artisan queue:work
 ```
 
-10. Create symbolic link:
-
-```bash
-php artisan storage:link
-```
+12. Application should be running on localhost:8000
 
 ## API Endpoints
 

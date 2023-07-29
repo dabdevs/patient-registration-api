@@ -14,7 +14,7 @@ class PatientController extends Controller
     {
         $photo = $request->file('document_photo');
 
-        // Save the file in a specific patient files
+        // Save the file in a patient's files directory
         $path = Storage::put('files/patients', $photo);
 
         // Save the patient in the database
