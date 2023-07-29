@@ -19,6 +19,7 @@ This is a Laravel API for patient registration, which allows users to register p
 - Laravel ^8.75
 - MySQL Database
 - Composer (for package installation)
+- Docker Desktop
 
 ## Installation
 
@@ -34,11 +35,46 @@ git clone https://github.com/dabdevs/patient-registration-api.git
 cd patient-registration-api
 ```
 
+3. Install composer dependencies:
+
+```bash
+composer install
+```
+
+6. Set up the environment:
+
+Copy the `.env.example` file to `.env` and update the necessary configurations, including database connection and mail settings.
+
+```bash
+cp .env.example .env
+```
+
+4. Install Laravel Sail:
+
+```bash
+composer require laravel/sail --dev
+```
+
+4. Install Laravel Sail. Select mysql as database:
+
+```bash
+php artisan sail:install
+```
+
+5. Configure proyect path in docker desktop:
+
+Navigate to the following view:
+Docker -> Preferences... -> Resources -> File Sharing
+
+Add the proyect path, press and restart
+
 3. Start the Docker containers:
 
 ```bash
 ./vendor/bin/sail up -d
 ```
+
+
 
 4. Bash inside the container:
 
@@ -52,13 +88,7 @@ cd patient-registration-api
 composer install
 ```
 
-6. Set up the environment:
 
-Copy the `.env.example` file to `.env` and update the necessary configurations, including database connection and mail settings.
-
-```bash
-cp .env.example .env
-```
 
 7. Generate the application key:
 
