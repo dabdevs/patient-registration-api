@@ -45,75 +45,82 @@ composer install
 
 4. Set up the environment:
 
-Copy the `.env.example` file to `.env` and update the necessary configurations, including database connection and mail settings.
+Copy the `.env.example` file to `.env` 
 
 ```bash
 cp .env.example .env
 ```
-Set the value of the DB_DATABASE in .env file to patient_management
+
+5. Open .env file and update the necessary configurations, including database connection and mail settings.
 
 
-5. Install Laravel Sail:
+```bash
+DB_DATABASE=patient_management
+APP_PORT=8000 # 8000 is an example. Feel free to set any available port on your machine
+```
+
+
+6. Install Laravel Sail:
 
 ```bash
 composer require laravel/sail --dev
 ```
 
 
-6. Publish Sail's docker-compose.yml file to the root of the project (choose mysql option):
+7. Publish Sail's docker-compose.yml file to the root of the project (choose mysql option):
 
 ```bash
 php artisan sail:install
 ```
 
 
-7. Build project containers with the following command:
+8. Build project containers with the following command:
 
 ```bash
 ./vendor/bin/sail up -d
 ```
 
 
-8. Register the project path in Docker Desktop
+9. Register the project path in Docker Desktop
    Preferences > Resources > File sharing > Add project path > Apply and restart
 
 
-9. Bash inside the container to perform artisan commands:
+10. Bash inside the container to perform artisan commands:
 
 ```bash
 ./vendor/bin/sail bash
 ```
 
 
-10. Generate the application key:
+11. Generate the application key:
 
 ```bash
 php artisan key:generate
 ```
 
 
-11. Create the tables for performing queue jobs:
+12. Create the tables for performing queue jobs:
 
 ```bash
 php artisan queue:table
 ```
 
 
-12. Run this command to listen to incoming queues:
+13. Run this command to listen to incoming queues:
 
 ```bash
 php artisan queue:work
 ```
 
 
-13. Run the database migrations and the seeders:
+14. Run the database migrations and the seeders:
 
 ```bash
 php artisan migrate --seed
 ```
 
 
-14. Create a symbolic link between public and storage directories:
+15. Create a symbolic link between public and storage directories:
 
 ```bash
 php artisan storage:link
