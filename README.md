@@ -135,6 +135,29 @@ php artisan jwt:secret
 
 
 ## API Endpoints
+This API provides user registration functionality using JSON Web Tokens (JWT) for authentication. Users can register and obtain a JWT token to authenticate themselves for future API requests.
+
+### User Registration
+
+-   **Endpoint**: `/api/v1/auth/register`
+-   **Method**: POST
+-   **Parameters**:
+    -   `name` (string): User's name (required)
+    -   `email` (string): User's email address (required, valid email format)
+    -   `password` (string): User's password(required)
+
+### User Login
+
+-   **Endpoint**: `/api/v1/auth/login`
+-   **Method**: POST
+-   **Parameters**:
+    -   `email` (string): User's email address (required, valid email format)
+    -   `password` (string): User's password(required)
+
+### User Logout
+
+-   **Endpoint**: `/api/v1/auth/logout`
+-   **Method**: POST
 
 ### Patient Registration
 
@@ -155,11 +178,13 @@ php artisan jwt:secret
 
 ## How to Use
 
-1. Register a new patient using the `/api/v1/register` endpoint by providing the required parameters in the request body.
+1. Register a user to receive a token using the `/api/v1/auth/register` endpoint by providing the required parameters in the request body. 
 
-2. Upon successful registration, the patient's data will be stored in the database, and a confirmation email will be sent asynchronously to the provided email address.
+2. Register a new patient using the `/api/v1/register` endpoint by providing the required parameters in the request body.
 
-3. To retrieve patient information, use the `/api/v1/patients/{id}` endpoint, replacing `{id}` with the patient's ID.
+3. Upon successful registration, the patient's data will be stored in the database, and a confirmation email will be sent asynchronously to the provided email address.
+
+4. To retrieve patient information, use the `/api/v1/patients/{id}` endpoint, replacing `{id}` with the patient's ID.
 
 ## Contributing
 
