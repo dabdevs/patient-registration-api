@@ -126,6 +126,14 @@ php artisan migrate --seed
 php artisan storage:link
 ```
 
+16. Publish JWT provider and create secret string:
+
+```bash
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+php artisan jwt:secret
+```
+
+
 ## API Endpoints
 
 ### Patient Registration

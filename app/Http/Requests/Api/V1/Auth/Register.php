@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api\V1\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PatientRequest extends FormRequest
+class Register extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,8 @@ class PatientRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:patients',
-            'phone_number' => 'required|string|max:20',
-            'document_photo' => 'required|image|mimes:jpeg,png,jpg,jpf|max:2048',
+            'email' => 'required|string|email|unique:users|max:255',
+            'password' => 'required|string|min:8',
         ];
     }
 }

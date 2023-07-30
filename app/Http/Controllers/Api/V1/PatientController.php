@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Events\PatientRegistered;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\V1\RegisterPatient;
 use App\Http\Requests\PatientRequest;
 use App\Http\Resources\PatientResource;
 use App\Models\Patient;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PatientController extends Controller
 {
-    public function register(PatientRequest $request) 
+    public function register(RegisterPatient $request) 
     {
         $photo = $request->file('document_photo');
 

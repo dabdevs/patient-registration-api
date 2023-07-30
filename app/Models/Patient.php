@@ -8,8 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Patient extends Model
 {
-    use HasFactory;
-    use Notifiable; 
+    use HasFactory, Notifiable; 
 
     public $fillable = [
         'email',

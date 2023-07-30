@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\PatientRegistered;
-use App\Jobs\SendPatientRegistrationConfirmationJob;
+use App\Notifications\V1\PatientRegistrationConfirmation;
 use Illuminate\Queue\InteractsWithQueue;
 
 class SendPatientRegistrationConfirmation
@@ -29,6 +29,6 @@ class SendPatientRegistrationConfirmation
     public function handle(PatientRegistered $event)
     {
         // Dispatch the job to send notifications to registered patient
-        SendPatientRegistrationConfirmationJob::dispatch($event->patient); 
+        $event->patient->notify(new PatientRegistrationConfirmation($event->patient));
     }
 }
