@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Events\PatientRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\RegisterPatient;
-use App\Http\Requests\PatientRequest;
-use App\Http\Resources\PatientResource;
+use App\Http\Resources\Api\V1\PatientResource;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,10 +26,13 @@ class PatientController extends Controller
             'document_photo' => $path
         ]);
 
-        // Fire the event that will trigger the job to send the notifications
+        // Fire the event to send the notifications
         event(new PatientRegistered($patient));
 
-        return response()->json(['message' => 'Patient registered successfully'], 201);
+        return response()->json([
+            'message' => 'Patient registered successfully',
+            'patient' => new PatientResource($patient)
+        ], 201);
     }
 
     public function show($id)

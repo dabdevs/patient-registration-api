@@ -28,7 +28,7 @@ class SendPatientRegistrationConfirmation
      */
     public function handle(PatientRegistered $event)
     {
-        // Dispatch the job to send notifications to registered patient
+        // Send notification to patient asynchronously
         $event->patient->notify(new PatientRegistrationConfirmation($event->patient));
     }
 }

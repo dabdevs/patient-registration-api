@@ -105,18 +105,17 @@ php artisan key:generate
 php artisan queue:table
 ```
 
-
-13. Run this command to listen to incoming queues:
-
-```bash
-php artisan queue:work
-```
-
-
-14. Run the database migrations and the seeders:
+13. Run the database migrations and the seeders:
 
 ```bash
 php artisan migrate --seed
+```
+
+
+14. Run this command to listen to incoming queues:
+
+```bash
+php artisan queue:work
 ```
 
 
@@ -125,6 +124,7 @@ php artisan migrate --seed
 ```bash
 php artisan storage:link
 ```
+
 
 16. Publish JWT provider and create secret string:
 
